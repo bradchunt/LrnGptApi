@@ -1,0 +1,78 @@
+{
+  "questions": [
+    {
+      "type": "mcq",
+      "reference": "853d4360-fec1-4492-bb89-c2ae6f49ffa7",
+      "data": {
+        "type": "mcq",
+        "stimulus": "What is the capital of Texas?",
+        "options": [
+          {
+            "value": "Austin",
+            "label": "Austin"
+          },
+          {
+            "value": "Lubbock",
+            "label": "Lubbock"
+          },
+          {
+            "value": "Dallas",
+            "label": "Dallas"
+          },
+          {
+            "value": "El Paso",
+            "label": "El Paso"
+          }
+        ],
+        "validation": {
+          "scoring_type": "exactMatch",
+          "valid_response": {
+            "value": [
+              "Austin"
+            ],
+            "score": 1
+          }
+        },
+        "shuffle_options": false,
+        "multiple_responses": false
+      }
+    }
+  ],
+  "meta": {
+    "user": {
+      "id": "bradhunt",
+      "firstname": "Brad",
+      "lastname": "Hunt",
+      "email": "brad.hunt@learnosity.com"
+    }
+  }
+}{
+  "items": [
+    {
+      "reference": "fd40c4ac-31c7-4693-95e9-95db21d49af4",
+      "metadata": {},
+      "definition": {
+        "widgets": [
+          {
+            "reference": "853d4360-fec1-4492-bb89-c2ae6f49ffa7"
+          }
+        ]
+      },
+      "status": "published",
+      "questions": [
+        {
+          "reference": "853d4360-fec1-4492-bb89-c2ae6f49ffa7"
+        }
+      ],
+      "tags": []
+    }
+  ],
+  "meta": {
+    "user": {
+      "id": "bradhunt",
+      "firstname": "Brad",
+      "lastname": "Hunt",
+      "email": "brad.hunt@learnosity.com"
+    }
+  }
+}
