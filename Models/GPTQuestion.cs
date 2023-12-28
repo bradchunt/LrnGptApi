@@ -10,4 +10,6 @@ public string? AnswerChoice4 { get; set; }
 
 public string? CorrectAnswer { get; set; }
 
+public string? Passage { get; set; }
+
 }

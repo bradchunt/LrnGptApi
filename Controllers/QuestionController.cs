@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authentication.Cookies;
+﻿
 using Microsoft.AspNetCore.Mvc;
 using LearnosityDotNetHelper;
 
@@ -15,6 +15,36 @@ public class QuestionController : ControllerBase
    public string Post(GPTQuestion question)
    {
       
+      Meta meta= new();
+      meta.User.ID="bradhunt";
+      meta.User.FirstName="Brad";
+      meta.User.LastName="Hunt";
+      meta.User.Email="brad.hunt@learnosity.com";
+
+      Feature feature = new();
+      
+      if(question.Passage!="")
+      {
+         //create a feature
+         
+         feature.Reference = Guid.NewGuid().ToString();
+         feature.Type = "sharedpassage";
+         //feature.Data.Heading = "Lorem Ipsum 2";
+         feature.Data.Content =question.Passage;
+         feature.Data.Type = "sharedpassage";
+
+         //create a list of features, add feature to it
+         Features features = new()
+         {
+            Meta = meta
+         };
+         features.Feature.Add(feature);
+
+         //submit the list of features to the API
+         ItemBank.SetFeatures(features);
+      }
+
+
       Question lrnQuestion = new()
       {
          Type = QuestionTypes.Mcq,
@@ -31,25 +61,46 @@ public class QuestionController : ControllerBase
       lrnQuestion.Data.Validation.ScoringType="exactMatch";
       lrnQuestion.Data.Validation.ValidResponse.Score=1;
       lrnQuestion.Data.Validation.ValidResponse.Value.Add(question.CorrectAnswer);
-    
-Meta meta= new();
-meta.User.ID="bradhunt";
-meta.User.FirstName="Brad";
-meta.User.LastName="Hunt";
-meta.User.Email="brad.hunt@learnosity.com";
 
-Questions questions = new();
-questions.Meta=meta;
-questions.Question.Add(lrnQuestion);
 
-Item item = new Item
-{
-    Reference = Guid.NewGuid().ToString(),
-    Status = "published"
-};
 
-      item.QuestionReferences.Add(new QuestionReference(){Reference=lrnQuestion.Reference});
-      item.Definition.Widgets.Add(new Widget(){Reference=lrnQuestion.Reference});
+        Questions questions = new()
+        {
+            Meta = meta
+        };
+        questions.Question.Add(lrnQuestion);
+
+      Item item = new()
+      {
+         Reference = Guid.NewGuid().ToString(),
+         Status = "published"
+      };
+
+      if(question.Passage!=""){
+         //add the feature to the item
+         item.FeatureReferences.Add(new FeatureReference() { Reference = feature.Reference });
+         Widget fWidget=new ();
+         fWidget.Reference=feature.Reference;
+         List<Widget> fWidgets =new();
+         fWidgets.Add(fWidget);
+         item.Definition.Regions.Add(new Region(){Type="column",Width=50,Widgets=fWidgets});
+
+
+         //add the question to the item
+         item.QuestionReferences.Add(new QuestionReference(){Reference=lrnQuestion.Reference});
+         Widget qWidget=new ();
+         qWidget.Reference=lrnQuestion.Reference;
+         List<Widget> qWidgets =new();
+         qWidgets.Add(qWidget);
+         item.Definition.Regions.Add(new Region(){Type="column",Width=50,Widgets=qWidgets});
+      }
+      else{
+         item.QuestionReferences.Add(new QuestionReference(){Reference=lrnQuestion.Reference});
+         item.Definition.Widgets.Add(new Widget(){Reference=lrnQuestion.Reference});
+      }
+     
+
+
 
       Items items = new();
       items.Meta=meta;
