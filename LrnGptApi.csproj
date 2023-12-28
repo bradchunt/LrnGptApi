@@ -7,10 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="LearnosityDotNetHelper" Version="0.0.1" />
     <PackageReference Include="LearnositySDK" Version="0.10.0-beta.2" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.12" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
-    <Reference Include="bin\Debug\net7.0\LearnosityDotNetHelper.dll" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 
   </ItemGroup>

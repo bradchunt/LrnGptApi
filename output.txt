@@ -75,4 +75,81 @@
       "email": "brad.hunt@learnosity.com"
     }
   }
+}{
+  "questions": [
+    {
+      "type": "mcq",
+      "reference": "a58903c4-75f7-427c-8660-fc1522c99e77",
+      "data": {
+        "type": "mcq",
+        "stimulus": "What is the square root of 144?",
+        "options": [
+          {
+            "value": "9",
+            "label": "9"
+          },
+          {
+            "value": "10",
+            "label": "10"
+          },
+          {
+            "value": "11",
+            "label": "11"
+          },
+          {
+            "value": "12",
+            "label": "12"
+          }
+        ],
+        "validation": {
+          "scoring_type": "exactMatch",
+          "valid_response": {
+            "value": [
+              "12"
+            ],
+            "score": 1
+          }
+        },
+        "shuffle_options": false,
+        "multiple_responses": false
+      }
+    }
+  ],
+  "meta": {
+    "user": {
+      "id": "bradhunt",
+      "firstname": "Brad",
+      "lastname": "Hunt",
+      "email": "brad.hunt@learnosity.com"
+    }
+  }
+}{
+  "items": [
+    {
+      "reference": "96bbf4fd-b949-4341-b0dc-aa107fb97d64",
+      "metadata": {},
+      "definition": {
+        "widgets": [
+          {
+            "reference": "a58903c4-75f7-427c-8660-fc1522c99e77"
+          }
+        ]
+      },
+      "status": "published",
+      "questions": [
+        {
+          "reference": "a58903c4-75f7-427c-8660-fc1522c99e77"
+        }
+      ],
+      "tags": []
+    }
+  ],
+  "meta": {
+    "user": {
+      "id": "bradhunt",
+      "firstname": "Brad",
+      "lastname": "Hunt",
+      "email": "brad.hunt@learnosity.com"
+    }
+  }
 }

@@ -14,6 +14,7 @@ public class QuestionController : ControllerBase
    [HttpPost(Name ="PostQuestion")]
    public string Post(GPTQuestion question)
    {
+      
       Question lrnQuestion = new()
       {
          Type = QuestionTypes.Mcq,
