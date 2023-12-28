@@ -23,7 +23,7 @@ public class QuestionController : ControllerBase
 
       Feature feature = new();
       
-      if(question.Passage!="")
+      if(!string.IsNullOrWhiteSpace(question.Passage))
       {
          //create a feature
          
@@ -76,7 +76,8 @@ public class QuestionController : ControllerBase
          Status = "published"
       };
 
-      if(question.Passage!=""){
+      if(!string.IsNullOrWhiteSpace(question.Passage))
+      {
          //add the feature to the item
          item.FeatureReferences.Add(new FeatureReference() { Reference = feature.Reference });
          Widget fWidget=new ();
